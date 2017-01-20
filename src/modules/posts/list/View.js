@@ -15,7 +15,12 @@ class View extends Component {
       return <h1>Loading ...</h1>
     }
 
-    return <Table data={this.props.posts} />
+    return (
+      <Table
+        data={this.props.posts}
+        deletePost={this.props.deletePost}
+      />
+    )
   }
 
   render() {
@@ -32,6 +37,7 @@ View.propTypes = {
   loading: React.PropTypes.bool,
   fetchPosts: React.PropTypes.func,
   triggerLoading: React.PropTypes.func,
+  deletePost: React.PropTypes.func,
 }
 
 export default View

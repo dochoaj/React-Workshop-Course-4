@@ -2,6 +2,20 @@ import React, { Component } from 'react'
 import { Link } from 'react-router'
 
 class Row extends Component {
+  constructor(props) {
+    super(props)
+
+    this.onDeleteClick = this.onDeleteClick.bind(this)
+  }
+
+  onDeleteClick(event) {
+    event.preventDefault()
+
+    if (confirm('Are you sure?')) {
+      this.props.deletePost(this.props.id)
+    }
+  }
+
   render() {
     return (
       <tr>
@@ -11,7 +25,10 @@ class Row extends Component {
           </Link>
         </td>
         <td>
-          <button className="btn btn-danger">
+          <button
+            onClick={this.onDeleteClick}
+            className="btn btn-danger"
+            >
             Delete
           </button>
         </td>
@@ -23,6 +40,7 @@ class Row extends Component {
 Row.propTypes = {
   id: React.PropTypes.number,
   title: React.PropTypes.string,
+  deletePost: React.PropTypes.func,
 }
 
 export default Row

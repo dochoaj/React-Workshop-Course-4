@@ -8,6 +8,7 @@ class Table extends Component {
         title: row.title,
         id: row.id,
         key: row.id,
+        deletePost: this.props.deletePost,
       }
 
       return <Row {...rowData} />
@@ -33,6 +34,7 @@ class Table extends Component {
 
 Table.propTypes = {
   data: React.PropTypes.arrayOf(React.PropTypes.object),
+  deletePost: React.PropTypes.func,
 }
 
 export default Table
