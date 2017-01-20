@@ -1,5 +1,9 @@
 import { combineReducers } from 'redux'
 
-const reducers = combineReducers({})
+import PostListReducer from './modules/posts/list'
+
+const reducers = combineReducers({
+  posts: PostListReducer,
+})
 
 export default reducers

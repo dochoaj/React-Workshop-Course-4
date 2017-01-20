@@ -1,26 +1,37 @@
 import React, { Component } from 'react'
+import Table from './Table'
 
-export default class View extends Component {
+class View extends Component {
+  componentWillMount() {
+    this.props.triggerLoading()
+  }
+
+  componentDidMount() {
+    this.props.fetchPosts()
+  }
+
+  renderContent() {
+    if (this.props.loading) {
+      return <h1>Loading ...</h1>
+    }
+
+    return <Table data={this.props.posts} />
+  }
+
   render() {
     return (
       <div className="list-posts">
-        <table className="table table-condensed">
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Author</th>
-              <th />
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">An awesome title!</th>
-              <td>Some author</td>
-              <td>Delete</td>
-            </tr>
-          </tbody>
-        </table>
+        {this.renderContent()}
       </div>
     )
   }
 }
+
+View.propTypes = {
+  posts: React.PropTypes.arrayOf(React.PropTypes.object),
+  loading: React.PropTypes.bool,
+  fetchPosts: React.PropTypes.func,
+  triggerLoading: React.PropTypes.func,
+}
+
+export default View
