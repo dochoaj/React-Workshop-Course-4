@@ -45,12 +45,6 @@ class App extends Component {
             <div className="col-lg-8">
               {this.props.children}
             </div>
-            <div className="col-lg-4">
-              <div className="well">
-                <h4>Actions</h4>
-                <button className="btn btn-primary">Create Post</button>
-              </div>
-            </div>
           </div>
           <hr />
         </div>
